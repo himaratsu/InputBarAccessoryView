@@ -170,7 +170,7 @@ open class KeyboardManager: NSObject, UIGestureRecognizerDelegate {
 
             let keyboardHeight = notification.endFrame.height
             self?.animateAlongside(notification) {
-                self?.constraints?.bottom?.constant = -keyboardHeight - (additionalBottomSpace?() ?? 0)
+                self?.constraints?.bottom?.constant = 0
                 self?.inputAccessoryView?.superview?.layoutIfNeeded()
             }
         }
@@ -182,7 +182,7 @@ open class KeyboardManager: NSObject, UIGestureRecognizerDelegate {
             else { return }
 
             self?.animateAlongside(notification) {
-                self?.constraints?.bottom?.constant = -keyboardHeight - (additionalBottomSpace?() ?? 0)
+                self?.constraints?.bottom?.constant = 0
                 self?.inputAccessoryView?.superview?.layoutIfNeeded()
             }
         }
@@ -312,7 +312,7 @@ open class KeyboardManager: NSObject, UIGestureRecognizerDelegate {
         frame.size.height = window.bounds.height - frame.origin.y
         keyboardNotification.endFrame = frame
 
-        var yCoordinateDirectlyAboveKeyboard = -frame.height
+        var yCoordinateDirectlyAboveKeyboard = 0.0
         if shouldApplyAdditionBottomSpaceToInteractiveDismissal, let additionalBottomSpace = additionalBottomSpace {
             yCoordinateDirectlyAboveKeyboard -= additionalBottomSpace()
         }
